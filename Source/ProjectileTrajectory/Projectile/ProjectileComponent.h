@@ -16,7 +16,7 @@ public:
 	UProjectileComponent();
 
 	UFUNCTION(BlueprintCallable)
-	void Throw(const FVector& TargetLocation);
+	void Throw(const FVector& NewTargetLocation);
 
 protected:
 	virtual void BeginPlay() override;
@@ -26,6 +26,13 @@ protected:
 	FRuntimeFloatCurve MovementCurve;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
-	float Speed = 10.0f;
+	float Speed = 1.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+	float HeightOffset = 50.0f;
+
+	FVector StartLocation;
+	FVector TargetLocation;
+	bool bThrown = false;
+	float Progress = 0.0f;
 };
