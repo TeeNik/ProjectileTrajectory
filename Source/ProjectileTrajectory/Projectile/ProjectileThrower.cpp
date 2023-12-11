@@ -2,7 +2,6 @@
 
 
 #include "ProjectileThrower.h"
-
 #include "ProjectileComponent.h"
 #include "Kismet/GameplayStatics.h"
 

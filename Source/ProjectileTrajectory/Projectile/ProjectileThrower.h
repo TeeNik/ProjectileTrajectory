@@ -25,8 +25,8 @@ protected:
 	float ThrowPeriod = 5.0f;
 
 	float ThrowTime = 0;
-
 	UPROPERTY(Transient)
-	ACharacter* TargetPlayer;
+	APawn* TargetPlayer;
+	bool bInitialized = false;
 
 };
