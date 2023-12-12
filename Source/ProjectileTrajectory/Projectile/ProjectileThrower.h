@@ -18,11 +18,17 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintImplementableEvent, Category = Thrower)
+	void OnProjectileThrown(const FVector& Start, const FVector& Target, const FVector& LaunchVelocity);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Thrower)
 	TSubclassOf<AActor> ProjectileClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Thrower)
 	float ThrowPeriod = 5.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Thrower)
+	float TargetFootOffset = -50.0f;
 
 	float ThrowTime = 0;
 	UPROPERTY(Transient)

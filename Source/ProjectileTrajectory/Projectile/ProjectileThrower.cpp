@@ -38,7 +38,21 @@ void AProjectileThrower::Tick(float DeltaTime)
 			{
 				if (UProjectileComponent* ProjectileComponent = Projectile->FindComponentByClass<UProjectileComponent>())
 				{
-					ProjectileComponent->Throw(TargetPlayer->GetActorLocation());
+					FVector TargetLoc = TargetPlayer->GetActorLocation() + FVector::UpVector * TargetFootOffset;
+
+					FVector DirToTarget = TargetLoc - GetActorLocation();
+					float Length = DirToTarget.Length();
+					DirToTarget.Z = 0;
+					DirToTarget.Normalize();
+					TargetLoc += DirToTarget * 150.0f;
+
+					ProjectileComponent->Throw(TargetLoc);
+
+					float time = 1.0f;
+					FVector LaunchVel = DirToTarget * (Length + 150) / time;
+					LaunchVel.Z += 980.0f * time / 2.0f;
+
+					OnProjectileThrown(GetActorLocation(), TargetLoc, LaunchVel);
 				}
 			}
 		}
