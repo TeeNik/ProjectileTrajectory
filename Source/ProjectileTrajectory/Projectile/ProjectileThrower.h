@@ -21,6 +21,10 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = Thrower)
 	void OnProjectileThrown(const FVector& Start, const FVector& Target, const FVector& LaunchVelocity);
 
+	UFUNCTION(BlueprintCallable, Category = Thrower)
+	FVector SuggestProjectileSpeed(const FVector& StartPos, const FVector& TargetPos, float ArcParam, float AboveArcParam, float BelowArcParam,
+		float AboveAngleThreshold, float BelowAngleThreshold, float GravityOverride = 0.0f, bool DrawDebug = false);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Thrower)
 	TSubclassOf<AActor> ProjectileClass;
 
